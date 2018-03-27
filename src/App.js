@@ -26,6 +26,8 @@ class App extends Component {
         }),
         value:'',
       });
+    }else if(e.keyCode === 13 && !this.state.value.trim()){
+      alert('message can\'t be empty');
     }
   }
 
