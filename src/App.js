@@ -8,29 +8,25 @@ class App extends Component {
     this.handleOnKeyUp = this.handleOnKeyUp.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-        value: '',
-        arr: [],
-        // text:'',
+      value: '',
+      arr: [],
+      // text:'',
     };
   }
 
   handleChange(e){
-      this.setState({value: e.target.value});
+    this.setState({value: e.target.value});
   }
 
   handleOnKeyUp(e){
-    if(e.keyCode === 13){
-        // this.setState({text: e.target.value});
-
-        this.setState({
-            arr: this.state.arr.concat({
-                text: this.state.value
-            }),
-            value:'',
-        });
+    if(e.keyCode === 13 && this.state.value.trim()){
+      this.setState({
+        arr: this.state.arr.concat({
+          text: this.state.value
+        }),
+        value:'',
+      });
     }
-
-    console.log(this.state.value);
   }
 
   render() {
@@ -40,19 +36,19 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-          <input value={this.state.value}
-            onKeyUp={this.handleOnKeyUp}
-            onChange={this.handleChange}/>
-          <ul className="App-ul">
-              {
-                  this.state.arr.map((item, index) => {
-                      return(
-                          <li key={index} className='App-li'>{item.text}</li>
-                      )
-                  })
-              }
-          </ul>
-          {/*<p>{this.state.text}</p>*/}
+        <input value={this.state.value}
+          onKeyUp={this.handleOnKeyUp}
+          onChange={this.handleChange}/>
+        <ul className="App-ul">
+          {
+            this.state.arr.map((item, index) => {
+              return(
+                <li key={index} className='App-li'>{item.text}</li>
+              )
+            })
+          }
+        </ul>
+        {/*<p>{this.state.text}</p>*/}
       </div>
     );
   }
